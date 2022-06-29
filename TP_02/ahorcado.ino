@@ -64,9 +64,10 @@ char *words3[] = {"ALPHAMON", "OMEGAMON", "MAGNAMON", "DUKEMON", "YGGDRASILL"};
 char *words4[] = {"THOR", "IRONMAN", "WASP", "ANTMAN", "HULK"};
 char *words5[] = {"VALKYR", "MESA", "EXCALIBUR", "SEVAGOTH", "OCTAVIA"};
 
+/** FUNCIONES **/
 /**
  * @brief Imprime un espacio en la posicion indicada.
- * 
+ *
  * @param col Columna donde imprime el espacio.
  * @param row Fila donde imprime el espacio.
  */
@@ -77,7 +78,7 @@ void clearCR(int col, int row)
 }
 /**
  * @brief Imprime un espacio en todas las columnas de una fila.
- * 
+ *
  * @param row Fila que va a imprimir un espacio,
  */
 void clear_col(int row)
@@ -91,7 +92,7 @@ void clear_col(int row)
 /**
  * @brief Imprime un espacio en las dos filas de la pantalla
  * llamando dos veces a la funcion clear_col
- * 
+ *
  */
 void clear_screen()
 {
@@ -102,31 +103,31 @@ void clear_screen()
 /**
  * @brief Genera una palabra al azardependiendo del nivel
  * y la copia en la variable guessWord.
- *  
+ *
  */
 void new_word()
 {
     int pick = random(NUM);
     switch (level)
     {
-        case 1:
-            strcpy(guessWord, words1[pick]);
+    case 1:
+        strcpy(guessWord, words1[pick]);
         break;
 
-        case 2:
-            strcpy(guessWord, words2[pick]);
+    case 2:
+        strcpy(guessWord, words2[pick]);
         break;
 
-        case 3:
-            strcpy(guessWord, words3[pick]);
+    case 3:
+        strcpy(guessWord, words3[pick]);
         break;
 
-        case 4:
-            strcpy(guessWord, words4[pick]);
+    case 4:
+        strcpy(guessWord, words4[pick]);
         break;
 
-        case 5:
-            strcpy(guessWord, words5[pick]);
+    case 5:
+        strcpy(guessWord, words5[pick]);
         break;
     }
 }
@@ -135,12 +136,12 @@ void new_word()
  * @brief Llama a las fucniones necesarias y deja todo listo para iniciar el juego.
  * Llamma a la funcion para generar una nueva palabra y calcula el tamaño.
  * Asigna los puntos de vida.
- * Llama a la funcion para mostrar los guiones, 
+ * Llama a la funcion para mostrar los guiones,
  * Pone las banderas en 0.
- * Ademas pone NULL en guessLetter para que no muestre basura al empezar y 
+ * Ademas pone NULL en guessLetter para que no muestre basura al empezar y
  * llena de "a" guessedLetter para reemplazar las letras en caso de que se superen los niveles.
  * Finalmente pone la bandera para iniciar el juego en 1.
- * 
+ *
  */
 void game_start()
 {
@@ -158,7 +159,7 @@ void game_start()
 
 /**
  * @brief Si el nivel es 1, asigna los puntos de vida en 3.
- * 
+ *
  */
 void set_life_points()
 {
@@ -170,22 +171,22 @@ void set_life_points()
 /**
  * @brief Imprime en la pantalla LCD el titulo del juego si no se mostro todavia.
  * Si se mostro pone la flagTitle en 1 y pone nextAction en 1.
- * 
+ *
  */
 void show_title()
 {
-    if(flagTitle == 0)
+    if (flagTitle == 0)
     {
         lcd.setCursor(4, 0);
         lcd.print("AHORCADO");
         nextAction = 1;
         flagTitle = 1;
-    } 
+    }
 }
 
 /**
  * @brief Imprime en la pantalla LCD el nivel.
- * 
+ *
  */
 void show_level()
 {
@@ -195,9 +196,9 @@ void show_level()
 }
 
 /**
- * @brief Imprime en la pantalla LCD un guion bajo por cada letra 
+ * @brief Imprime en la pantalla LCD un guion bajo por cada letra
  * que tenga la palabra.
- * 
+ *
  */
 void show_blanks()
 {
@@ -210,7 +211,7 @@ void show_blanks()
 
 /**
  * @brief Imprime en la pantalla LCD los puntos de vida y se va actualizando si se pierden.
- * 
+ *
  */
 void show_life_points()
 {
@@ -241,7 +242,7 @@ void show_life_points()
 /**
  * @brief Imprime en la pantalla LCD la letra en la que se esta parado.}
  * con dos felchas que la señalan.
- * 
+ *
  */
 void show_letter()
 {
@@ -252,9 +253,9 @@ void show_letter()
 }
 
 /**
- * @brief Imprime en la pantalla LCD las dos letras anteriores a la 
+ * @brief Imprime en la pantalla LCD las dos letras anteriores a la
  * izquierda de la letra que se esta parado.
- * 
+ *
  */
 void show_leters_left()
 {
@@ -282,9 +283,9 @@ void show_leters_left()
 }
 
 /**
- * @brief Imprime en la pantalla LCD las dos letras posteriores a la 
+ * @brief Imprime en la pantalla LCD las dos letras posteriores a la
  * derecha de la letra que se esta parado.
- * 
+ *
  */
 void show_letters_right()
 {
@@ -313,7 +314,7 @@ void show_letters_right()
 
 /**
  * @brief Si la letra seleccionada no es NULL la imprime en la pantalla del LCD.
- * 
+ *
  */
 void show_last_letter()
 {
@@ -327,7 +328,7 @@ void show_last_letter()
 /**
  * @brief Imprime por la pantalla LCD "YOU WIN"
  * y la palabra que habia que adivinar.
- * 
+ *
  */
 void show_winner()
 {
@@ -339,7 +340,7 @@ void show_winner()
 
 /**
  * @brief Imprime por la pantalla LCD "GAME OVER".
- * 
+ *
  */
 void show_game_over()
 {
@@ -351,7 +352,7 @@ void show_game_over()
 
 /**
  * @brief Imprime por la pantalla LCD "CHAMPION".
- * 
+ *
  */
 void show_champion()
 {
@@ -361,7 +362,7 @@ void show_champion()
 
 /**
  * @brief Si el modo cheat esta activado imprime "CH", si no lo borrra
- * 
+ *
  */
 void show_cheat_mode()
 {
@@ -380,7 +381,7 @@ void show_cheat_mode()
 /**
  * @brief Decrementa el contador de letras en uno,
  * si baja de 0 lo devuelve a 25.
- * 
+ *
  */
 void letters_counter_down()
 {
@@ -394,7 +395,7 @@ void letters_counter_down()
 /**
  * @brief Incrementa el contador de letras en uno,
  * si sube de 25 lo vuelve a 0.
- * 
+ *
  */
 void letters_counter_up()
 {
@@ -408,22 +409,22 @@ void letters_counter_up()
 /**
  * @brief Guarda la letra en la posicion en la que se encuentra el contador.
  * pone la bandera selected en 1 para indicar que se selecciono una letra.
- * 
+ *
  */
 void select_Letter()
 {
     guessLetter = letters[lettersCounter];
     selected = 1;
-}  
+}
 
 /**
- * @brief Recorre el la palabra a adivinar, 
+ * @brief Recorre el la palabra a adivinar,
  * si la letra seleccionada coincide con una o mas letras las imprime en la pantalla LCD y cuenta cuantas imprimio.
- * 
- * @param letter 
+ *
+ * @param letter
  */
 void show_correct_letters(char letter)
-{   
+{
     lettersPut = 0;
     for (i = 0; i < wordSize; i++)
     {
@@ -441,11 +442,11 @@ void show_correct_letters(char letter)
  * copia la cantidad de letras que se imprimio, las gurarda en el total de aciertos,
  * y pone correctLetter en 1.
  * Si no pone correctLetter en 0.
- * 
+ *
  */
 void close_to_victtory()
 {
-    if(lettersPut > 0 && !already_guessed())
+    if (lettersPut > 0 && !already_guessed())
     {
         totalRight += lettersPut;
         correctLetter = 1;
@@ -458,7 +459,7 @@ void close_to_victtory()
 
 /**
  * @brief Agrega la letra seleccionada al array de letras acertadas.
- * 
+ *
  */
 void guessed_letters()
 {
@@ -467,10 +468,10 @@ void guessed_letters()
 }
 
 /**
- * @brief Recorre las letras que fueron adivinadas, 
+ * @brief Recorre las letras que fueron adivinadas,
  * y revisa que la letra selecionada esta o no en el array.
- * 
- * @return int Retorna 0 si la letra seleccionada no esta y 1 si esta. 
+ *
+ * @return int Retorna 0 si la letra seleccionada no esta y 1 si esta.
  */
 int already_guessed()
 {
@@ -491,10 +492,9 @@ int already_guessed()
     return retorno;
 }
 
-
 /**
  * @brief Si el modo cheat esta desactivado, lo activa, si no, lo desactiva.
- * 
+ *
  */
 void cheat_on_off()
 {
@@ -510,7 +510,7 @@ void cheat_on_off()
 
 /**
  * @brief Reimprime en la pantalla LCD las letras ya acertadas.
- * 
+ *
  */
 void rewrite_letters()
 {
@@ -526,7 +526,7 @@ void rewrite_letters()
 
 /**
  * @brief Restaura los guines bajos y las letras que fueron acertadas.
- *  * 
+ *  *
  */
 void restore()
 {
@@ -546,7 +546,7 @@ void need_restore()
 /**
  * @brief Si la letra seleccionada coincide con la letra del truco en la posicion indicada,
  *  la guarda en un array e incrementa la posicion en 1 para comparar la siguiente letra.
- * 
+ *
  */
 void cheats()
 {
@@ -590,7 +590,7 @@ void chet_konami_code()
  * Llama a la funcion para activar los trucos.
  * y a la funcion que analiza si necesita restaurar las letras.
  * Pone guessLetter en NULL para que no lo tome como error y descuente una vida.
- * 
+ *
  */
 void press_button_cheat()
 {
@@ -607,7 +607,7 @@ void press_button_cheat()
 /**
  * @brief Antirebote del bboton izquierdo.
  * Llama a la funcion que hace decrementar el contador de letras.
- * 
+ *
  */
 void press_button_left()
 {
@@ -622,7 +622,7 @@ void press_button_left()
 /**
  * @brief Antirebote del boton derecho.
  * Llama a la funcion que hace incrementar el contador de letras.
- * 
+ *
  */
 void press_button_right()
 {
@@ -661,7 +661,7 @@ void press_button_select()
             cheats();
             cheats_mortal_kombat();
             chet_konami_code();
-        }   
+        }
     }
     button_select_before = button_select_now;
 }
@@ -678,53 +678,53 @@ void actions()
 {
     switch (nextAction)
     {
-        case 1:
-            clear_screen();
-            show_level();
-            nextAction = 2;
-        break;
-    
-        case 2:
-            clear_screen();
-            game_start();
-            nextAction = 0;
+    case 1:
+        clear_screen();
+        show_level();
+        nextAction = 2;
         break;
 
-        case 3:
-            clear_screen();
-            show_game_over();
+    case 2:
+        clear_screen();
+        game_start();
+        nextAction = 0;
+        break;
+
+    case 3:
+        clear_screen();
+        show_game_over();
+        nextAction = 1;
+        level = 1;
+        break;
+
+    case 4:
+        clear_screen();
+        show_winner();
+        if (level < 5)
+        {
+            level++;
             nextAction = 1;
-            level = 1;
+        }
+        else
+        {
+            nextAction = 5;
+        }
         break;
 
-        case 4:
-            clear_screen();
-            show_winner();
-            if (level < 5)
-            {
-                level++;
-                nextAction = 1;
-            }
-            else
-            {
-                nextAction = 5;
-            }
-        break;
-
-        case 5:
-            clear_screen();
-            flagTitle = 0;
-            show_title();
-            show_champion();
-            nextAction = 1;
-            level = 1;
+    case 5:
+        clear_screen();
+        flagTitle = 0;
+        show_title();
+        show_champion();
+        nextAction = 1;
+        level = 1;
         break;
     }
 }
 
 /**
  * @brief secuencia que ejecuta una accion cada 2 segundos.
- * 
+ *
  */
 void sequence()
 {
@@ -737,12 +737,13 @@ void sequence()
     }
 }
 
+/**  LOOP **/
 void loop()
 {
     show_title();
     sequence();
-    //Si el juego empezo se pueden usar los botones.
-    //y se muestra la vida.
+    // Si el juego empezo se pueden usar los botones.
+    // y se muestra la vida.
     if (gameStarted == 1)
     {
         show_life_points();
@@ -756,9 +757,9 @@ void loop()
         press_button_cheat();
         show_cheat_mode();
 
-        //Se pierde una vida si se selecciono una,
-        //no se acerto a la correcta, el cheat mode esta desactivado,
-        //y no hay vidas infinitas.
+        // Se pierde una vida si se selecciono una,
+        // no se acerto a la correcta, el cheat mode esta desactivado,
+        // y no hay vidas infinitas.
         if (selected == 1 &&
             correctLetter == 0 &&
             cheat == 0 &&
@@ -766,8 +767,8 @@ void loop()
             infiniteLives == 0)
         {
             lifePoints--;
-            //Si las vidas llegan a 0 se ejecuta el case 3 de las acciones.
-            //game started en 0 para interrumpir el uso de botones y las funciones que muestran.
+            // Si las vidas llegan a 0 se ejecuta el case 3 de las acciones.
+            // game started en 0 para interrumpir el uso de botones y las funciones que muestran.
             if (lifePoints == 0)
             {
                 gameStarted = 0;
@@ -776,18 +777,18 @@ void loop()
         }
         else
         {
-            //Si la cantidad de letras correctas es igual a la cantidad de letras de la palabra.
-            //se ejecuta el case 4 de las acciones.
-            //game started en 0 para interrumpir el uso de botones y las funciones que muestran.
+            // Si la cantidad de letras correctas es igual a la cantidad de letras de la palabra.
+            // se ejecuta el case 4 de las acciones.
+            // game started en 0 para interrumpir el uso de botones y las funciones que muestran.
             if (totalRight == wordSize)
             {
                 gameStarted = 0;
                 nextAction = 4;
             }
         }
-        
+
         selected = 0;
     }
-    
+
     delay(80);
 }
